@@ -1,0 +1,51 @@
+<html>
+	<style>
+	
+	</style>
+	<title></title>
+	<script type="text/javascript">
+	function compute()
+	{
+		var a = document.getElementById("abk_exp").value
+		if (a==null || a==undefined || a == '')
+		{
+			alert("Please enter your experience");
+		} 
+		else 
+		{
+			if(a<5)
+			{
+				alert("Your are junior resource");
+			}
+			else
+			{
+				alert("Just retire!!");
+			}
+		}
+	}
+	import {NluxConvo} from '@nlux/nlux-react';
+import {useAdapter} from '@nlux/openai-react';
+ 
+const MyAiChatComp = () => {
+    const chatGptAdapter = useAdapter({
+        apiKey: 'YOUR_OPEN_AI_API_KEY',
+        initialSystemMessage:
+            'I want you to act Elon Musk, with a twist of humor, teaching ' +
+            'a web developer about how to make the most out of ' +
+            'generative AI. Give answers of around 1 paragraph.'
+    });
+ 
+    return (
+        <NluxConvo
+            adapter={chatGptAdapter}
+            promptBoxOptions={{placeholder: 'Hi, Elon here! How can I help?'}}
+        />
+    );
+}
+	</script>
+	<body>
+		<div><label class='abklabel' id='abk_labelname'>Enter your name : </label><input id='abk_name'></input></div>
+		<div><label class='abklabel' id='abk_labelexp'>Enter your Experience (in Years) : </label><input id='abk_exp' type = 'number'></input></div>
+		<div><button id='abk_button' onClick="compute()">Submit</button></div>
+	</body>
+</html>
